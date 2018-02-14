@@ -1,11 +1,7 @@
 '''
-Latest attempt at visualizing a class. Uses keras-vis library
-Observations:
- - Output better resembles the specified class
- - The "Jitter" feature makes sure features aren't 
-   confined to the edges of the image.
- - Try tweaking so it can work with InceptionV3
- - Explore source code of keras-vis for more fine-tuned control
+Same code as activation_maximization.py, but adapted to
+produces of all classes in the VGG16 classification 
+network, and saves them in the output/ directory.
 '''
 # Model setup
 from keras.applications import VGG16
@@ -19,6 +15,8 @@ from keras.models import load_model
 from vis.visualization import visualize_activation
 from matplotlib import pyplot as plt
 from vis.input_modifiers import Jitter
+# save
+from scipy.misc import imsave
 
 # Build the network
 model = VGG16(weights='imagenet', include_top=True)
@@ -41,10 +39,14 @@ os.remove('temp.h5')
 plt.rcParams['figure.figsize'] = (6, 6)
 
 # Choose label
-label = 833 #20# 850 #309 # 20
+#label = 833 #20# 850 #309 # 20
+for i in range(1000):
+    filename = 'output/label_%d.png' % (i)
+    if not os.path.isfile(filename):
+        print('processing label ' + str(i))
+        # Jitter 16 pix along all dim. during optimization
+        img = visualize_activation(model, layer_idx, filter_indices=i, 
+                max_iter=500, verbose=True, input_modifiers=[Jitter(128)])
+        imsave(filename, img)
+        print('processed label ' + str(i))
 
-# Jitter 16 pix along all dim. during optimization
-img = visualize_activation(model, layer_idx, filter_indices=label, 
-        max_iter=500, verbose=True, input_modifiers=[Jitter(128)])
-plt.imshow(img)
-plt.show()

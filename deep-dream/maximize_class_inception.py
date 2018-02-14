@@ -1,5 +1,9 @@
 '''
-WIP: Visualizing a single class
+WIP: Visualizing a single class. First attempt at visualizing a class.
+Observations:
+ - Output is fairly noisy
+ - Features seem to be condensed in the edges of the image
+ - Method works with InceptionV3, but needs tweaking
 '''
 
 from keras import applications

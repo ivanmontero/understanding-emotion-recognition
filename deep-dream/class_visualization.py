@@ -1,6 +1,6 @@
 '''
 Maximizing a class of VGG16 via gradient ascent in input space.
-Results example: http://i.imgur.com/4nj4KjN.jpg
+Minor edits to conv_filter_visualization.py
 '''
 from __future__ import print_function
 

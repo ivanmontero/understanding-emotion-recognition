@@ -1,2 +1,2 @@
 https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a - VGG16 labels
-
+http://cs231n.stanford.edu - Course for Deep Learning

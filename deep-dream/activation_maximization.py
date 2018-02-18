@@ -41,7 +41,7 @@ os.remove('temp.h5')
 plt.rcParams['figure.figsize'] = (6, 6)
 
 # Choose label
-label = 833 #20# 850 #309 # 20
+label = 850 #20# 850 #309 # 20
 
 # Jitter 16 pix along all dim. during optimization
 img = visualize_activation(model, layer_idx, filter_indices=label, 

@@ -1,0 +1,13 @@
+Human datasets:
+
+We combine five publicly available labeled facial expression databases to create the HED:
+
+ (a) Static Facial Expressions in the Wild (SFEW) database 
+
+(b) Extended Cohn-Kanade database (CK+) 
+
+(c) MMI database 
+
+(d) Karolinska Directed Emotional Faces (KDEF)
+
+(e) Denver Intensity of Spontaneous Facial Actions (DISFA) database 

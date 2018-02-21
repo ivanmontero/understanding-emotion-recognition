@@ -76,6 +76,46 @@ def KitModel(weight_file = None):
     load_weights(model, weight_file)
     return model
 
+def KitModelLinear(weight_file = None):
+        
+    data            = layers.Input(name = 'data', shape = (224, 224, 3,) )
+    conv1           = layers.Conv2D(name='conv1', filters = 96, kernel_size=((7, 7)), strides=((2, 2)), padding='valid', use_bias=True)(data)
+    relu1           = layers.Activation(name = 'relu1', activation = 'relu')(conv1)
+    norm1           = LRN(size = 3, alpha = 0.0005000000237487257, beta = 0.75, k = 1.0, name = 'norm1')(relu1)
+    pool1_input     = layers.ZeroPadding2D(padding = ((0, 2), (0, 2)))(norm1)
+    pool1           = layers.MaxPooling2D(name = 'pool1', pool_size = (3, 3), strides = (3, 3), padding = 'valid')(pool1_input)
+    conv2_input     = layers.ZeroPadding2D(padding = ((2, 2), (2, 2)))(pool1)
+    conv2           = layers.Conv2D(name='conv2', filters = 256, kernel_size=((5, 5)), strides=((1, 1)), padding='valid', use_bias=True)(conv2_input)
+    relu2           = layers.Activation(name = 'relu2', activation = 'relu')(conv2)
+    pool2_input     = layers.ZeroPadding2D(padding = ((0, 1), (0, 1)))(relu2)
+    pool2           = layers.MaxPooling2D(name = 'pool2', pool_size = (2, 2), strides = (2, 2), padding = 'valid')(pool2_input)
+    conv3_input     = layers.ZeroPadding2D(padding = ((1, 1), (1, 1)))(pool2)
+    conv3           = layers.Conv2D(name='conv3', filters = 512, kernel_size=((3, 3)), strides=((1, 1)), padding='valid', use_bias=True)(conv3_input)
+    relu3           = layers.Activation(name = 'relu3', activation = 'relu')(conv3)
+    conv4_input     = layers.ZeroPadding2D(padding = ((1, 1), (1, 1)))(relu3)
+    conv4           = layers.Conv2D(name='conv4', filters = 512, kernel_size=((3, 3)), strides=((1, 1)), padding='valid', use_bias=True)(conv4_input)
+    relu4           = layers.Activation(name = 'relu4', activation = 'relu')(conv4)
+    conv5_input     = layers.ZeroPadding2D(padding = ((1, 1), (1, 1)))(relu4)
+    conv5           = layers.Conv2D(name='conv5', filters = 512, kernel_size=((3, 3)), strides=((1, 1)), padding='valid', use_bias=True)(conv5_input)
+    relu5           = layers.Activation(name = 'relu5', activation = 'relu')(conv5)
+    pool5_input     = layers.ZeroPadding2D(padding = ((0, 2), (0, 2)))(relu5)
+    pool5           = layers.MaxPooling2D(name = 'pool5', pool_size = (3, 3), strides = (3, 3), padding = 'valid')(pool5_input)
+    fc6_0           = __flatten(name = 'fc6_0', input = pool5)
+    fc6_1           = layers.Dense(name = 'fc6_1', units = 4048, use_bias = True)(fc6_0)
+    relu6           = layers.Activation(name = 'relu6', activation = 'relu')(fc6_1)
+    drop6           = layers.Dropout(name = 'drop6', rate = 0.5, seed = None)(relu6)
+    fc7_0           = __flatten(name = 'fc7_0', input = drop6)
+    fc7_1           = layers.Dense(name = 'fc7_1', units = 4048, use_bias = True)(fc7_0)
+    relu7           = layers.Activation(name = 'relu7', activation = 'relu')(fc7_1)
+    drop7           = layers.Dropout(name = 'drop7', rate = 0.5, seed = None)(relu7)
+    fc8_cat_0       = __flatten(name = 'fc8_cat_0', input = drop7)
+    fc8_cat_1       = layers.Dense(name = 'fc8_cat_1', units = 7, use_bias = True)(fc8_cat_0)
+    prob            = layers.Activation(name = 'prob', activation = 'linear')(fc8_cat_1)
+    model           = Model(inputs = [data], outputs = [prob])
+    load_weights(model, weight_file)
+    return model
+
+
 from keras.layers.core import Layer
 class LRN(Layer):
 

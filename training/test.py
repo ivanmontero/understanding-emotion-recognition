@@ -33,5 +33,5 @@ print(img.shape)
 pred = model.predict(np.array([img]))
 # print(model.predict_classes(img))
 
-# Print out the prediction index, which should be 427
+# Print out the prediction
 print(np.argmax(pred))

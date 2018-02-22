@@ -1,2 +1,7 @@
 **/*.npy
 *.npy
+human/
+human/*
+./human
+./haum/*
+

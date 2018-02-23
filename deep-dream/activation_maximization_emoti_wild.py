@@ -43,6 +43,6 @@ label = 2
 
 # Jitter 16 pix along all dim. during optimization
 img = visualize_activation(model, layer_idx, filter_indices=label, 
-        max_iter=10000, verbose=True, input_modifiers=[Jitter(16)])
+        max_iter=1000, verbose=True, input_modifiers=[Jitter(16)])
 plt.imshow(img)
 plt.show()

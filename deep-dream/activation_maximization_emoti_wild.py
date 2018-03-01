@@ -16,6 +16,9 @@ from vis.visualization import visualize_activation
 from matplotlib import pyplot as plt
 from vis.input_modifiers import Jitter
 
+# Image path
+img_path = "./input/Female1_Stage2.png"
+
 # Build the network
 model = KitModelLinear("../training/emoti-wild/emoti-wild-weights.npy")
 model.summary()
@@ -25,24 +28,20 @@ layer_idx = utils.find_layer_idx(model, 'prob')
 #### Activation will be switched in model definition ####
 ## * KitModel is to be used for predictions
 ## * KitModelLinear is to be used for visualizations
-# Ability to search for layer index by name
 
-# Swap softmax with linear
-# model.layers[layer_idx].activation = activations.linear
+# Load image 
+img = utils.load_img(img_path, target_size=(224, 224))
 
-# Replacing the next line:
-# model = utils.apply_modifications(model)
-# model.save('temp.h5')
-# model = load_model('temp.h5')
-# os.remove('temp.h5')
+#plt.imshow(img)
+#plt.show()
 
 plt.rcParams['figure.figsize'] = (6, 6)
 
 # Choose label
-label = 2
+label = 3
 
 # Jitter 16 pix along all dim. during optimization
 img = visualize_activation(model, layer_idx, filter_indices=label, 
-        max_iter=1000, verbose=True, input_modifiers=[Jitter(16)])
+        max_iter=20, verbose=True, seed_input=img)
 plt.imshow(img)
 plt.show()

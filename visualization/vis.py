@@ -1,5 +1,0 @@
-
-
-
-
-def visualize_activation():

@@ -4,7 +4,8 @@ sys.path.insert(0, '../training/emoti-wild/')
 from emoti_wild_keras import KitModelLinear
 import os
 from vis.utils import utils
-from vis.visualization import visualize_saliency, visualize_cam, overlay
+sys.path.insert(0, '../')
+from keras_vis_fixed.visualization import visualize_saliency, visualize_cam, overlay
 from keras import activations
 from matplotlib import pyplot as plt
 from keras.models import load_model
@@ -42,13 +43,14 @@ plt.show()
 
 modifier = [None, 'guided', 'relu']
 
-#grads = visualize_saliency(model, layer_idx, filter_indices=index,
-#        seed_input=img, backprop_modifier=modifier[0])
-grads = visualize_cam(model, layer_idx, filter_indices=index,
-        seed_input=img, backprop_modifier=modifier[0])     
+grads = visualize_saliency(model, layer_idx, filter_indices=index,
+       seed_input=img, backprop_modifier=modifier[1])
+# grads = visualize_cam(model, layer_idx, filter_indices=index,
+#         seed_input=img, backprop_modifier=modifier[2])     
 
 #jet_heatmap = np.uint8(cm.jet(grads)[..., :3] * 255)
 #plt.imshow(overlay(jet_heatmap, img))
 
-plt.imshow(grads, cmap='jet')
+# plt.imshow(grads, cmap='jet')
+plt.imshow(grads)
 plt.show()

@@ -28,6 +28,11 @@ layer_idx = utils.find_layer_idx(model, 'prob')
 #### Activation will be switched in model definition ####
 ## * KitModel is to be used for predictions
 ## * KitModelLinear is to be used for visualizations
+## Since the library will try recomipiling the model by 
+## saving the file in a "tempfile" location, which causes
+## an exception, KitModelLinear manually sets the activation
+## of the last layer from softmax to linear for better 
+## results.
 
 # Load image 
 img = utils.load_img(img_path, target_size=(224, 224))

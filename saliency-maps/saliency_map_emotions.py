@@ -11,6 +11,7 @@ from matplotlib import pyplot as plt
 from keras.models import load_model
 import matplotlib.cm as cm
 import numpy as np
+from scipy.misc import imsave
 
 # Build the VGG
 # model = VGG16(input_shape=(224, 224, 3),weights='imagenet', include_top=True)
@@ -54,3 +55,5 @@ grads = visualize_saliency(model, layer_idx, filter_indices=index,
 # plt.imshow(grads, cmap='jet')
 plt.imshow(grads)
 plt.show()
+
+#imsave("elon_musk_saliency_guided.png", grads)

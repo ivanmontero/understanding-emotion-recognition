@@ -22,21 +22,18 @@ def predict(img_name):
     # img = misc.imread("elon_musk.jpg")
     img = misc.imread(img_name)
 
-    # Image size before resizing
-    print(img.shape)
-
     # Resize image
     img = misc.imresize(img, [224, 224])
 
-    # New image size
-    print(img.shape)
+    # Remove alpha
+    img = img[:,:,:3]
 
     # Run the image throught the model, and make a prediction
     pred = model.predict(np.array([img]))
     # print(model.predict_classes(img))
 
     # Print out the prediction
-    EMOTIONS = {
+    EMOTIONS = [
         "angry",
         "disgust",
         "fear",
@@ -44,7 +41,7 @@ def predict(img_name):
         "neutral",
         "sad",
         "surprise",
-    }
+    ]
     return EMOTIONS[np.argmax(pred)]
 
 print(predict("questionable_caleb_1.png"))

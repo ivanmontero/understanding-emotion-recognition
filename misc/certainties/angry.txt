@@ -1,0 +1,63 @@
+human_angry_10.png
+	angry		0.0019359194
+	disgust		0.0002006700
+	fear		0.0004743514
+	joy		0.9818471074
+	neutral		0.0151337432
+	sad		0.0002776860
+	surprise	0.0001305934
+
+human_angry_11.png
+	angry		0.0000006862
+	disgust		0.0000509114
+	fear		0.0000022938
+	joy		0.5205341578
+	neutral		0.4794077873
+	sad		0.0000031578
+	surprise	0.0000010485
+
+human_angry_12.png
+	angry		0.0613373220
+	disgust		0.0059924754
+	fear		0.0039065192
+	joy		0.9030123353
+	neutral		0.0209656414
+	sad		0.0044108257
+	surprise	0.0003748182
+
+human_angry_13.png
+	angry		0.0001836309
+	disgust		0.0000161317
+	fear		0.0000558952
+	joy		0.0160449892
+	neutral		0.0000048740
+	sad		0.9836698771
+	surprise	0.0000246104
+
+human_angry_4.png
+	angry		0.0000023531
+	disgust		0.0000014711
+	fear		0.0000917507
+	joy		0.0000067319
+	neutral		0.0000022246
+	sad		0.9998896122
+	surprise	0.0000058603
+
+human_angry_6.png
+	angry		0.0004581333
+	disgust		0.0012740408
+	fear		0.0006123692
+	joy		0.0264308564
+	neutral		0.9701005816
+	sad		0.0006558653
+	surprise	0.0004683007
+
+human_angry_7.png
+	angry		0.0000002918
+	disgust		0.0000069818
+	fear		0.0000009102
+	joy		0.0000758812
+	neutral		0.9999152422
+	sad		0.0000004108
+	surprise	0.0000003851
+

@@ -4,4 +4,5 @@ human/
 human/*
 ./human
 ./haum/*
-
+./saliency-maps/input
+./saliency-maps/input/*

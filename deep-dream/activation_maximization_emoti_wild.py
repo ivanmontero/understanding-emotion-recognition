@@ -42,11 +42,21 @@ img = utils.load_img(img_path, target_size=(224, 224))
 
 plt.rcParams['figure.figsize'] = (6, 6)
 
+EMOTIONS = {
+    "angry" : 0,
+    "disgust" : 1,
+    "fear" : 2,
+    "joy" : 3,
+    "neutral" : 4,
+    "sad" : 5,
+    "surprise" : 6,
+}
+
 # Choose label
-label = 3
+label = 0
 
 # Jitter 16 pix along all dim. during optimization
 img = visualize_activation(model, layer_idx, filter_indices=label, 
-        max_iter=20, verbose=True, seed_input=img)
+        max_iter=1000, verbose=True, seed_input=img)
 plt.imshow(img)
 plt.show()

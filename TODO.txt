@@ -1,2 +1,0 @@
-directory walker to sort images
-[amount_of_images]/[image_name]/[image_and_generated_images]
